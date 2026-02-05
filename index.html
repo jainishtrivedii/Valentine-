@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Just Something From Me 🤍</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ffe6ef, #fdfbfb);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #333;
+  }
+
+  .scene {
+    display: none;
+    max-width: 420px;
+    background: white;
+    padding: 35px 30px;
+    border-radius: 22px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+    animation: fadeIn 0.6s ease;
+  }
+
+  .scene.active {
+    display: block;
+  }
+
+  h1 {
+    color: #ff4d6d;
+    font-weight: 600;
+  }
+
+  p {
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  button {
+    margin-top: 18px;
+    padding: 12px 22px;
+    font-size: 16px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  .primary {
+    background: #ff4d6d;
+    color: white;
+  }
+
+  .secondary {
+    background: #eee;
+    color: #333;
+  }
+
+  button:hover {
+    transform: scale(1.05);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  /* Valentine final interaction */
+  .yes {
+    background: #ff4d6d;
+    color: white;
+    font-size: 20px;
+  }
+
+  .no {
+    background: #ddd;
+    margin-left: 10px;
+  }
+</style>
+</head>
+
+<body>
+
+<!-- SCENE 1 -->
+<div class="scene active" id="scene1">
+  <h1>Hi you 🌷</h1>
+  <p>Quick honest check…<br>how are you feeling about <b>Jainish</b> right now?</p>
+  <button class="primary" onclick="goTo('scene2a')">😊 Feeling okay / happy</button><br>
+  <button class="secondary" onclick="goTo('scene2b')">😤 Wanna punch him very, very hard</button>
+</div>
+
+<!-- SCENE 2A -->
+<div class="scene" id="scene2a">
+  <p>Damn…<br>even after him being slow,<br>you’re still happy with him.<br><br><b>Good going, girl 🥹🤍</b></p>
+  <button class="primary" onclick="goTo('scene3')">Continue →</button>
+</div>
+
+<!-- SCENE 2B -->
+<div class="scene" id="scene2b">
+  <p>Yeah…<br>that checks out 😅<br><br>He probably deserves it.</p>
+  <button class="primary" onclick="goTo('scene3')">Tell me more →</button>
+</div>
+
+<!-- SCENE 3 -->
+<div class="scene" id="scene3">
+  <p>If your mood right now<br>were a weather forecast…<br>what would it be?</p>
+  <button class="secondary" onclick="goTo('scene4')">⛈ Stormy but passing</button><br>
+  <button class="secondary" onclick="goTo('scene4')">☁️ Cloudy, unsure</button><br>
+  <button class="secondary" onclick="goTo('scene4')">🌤 Calm but distant</button><br>
+  <button class="secondary" onclick="goTo('scene4')">☀️ Mostly okay</button>
+</div>
+
+<!-- SCENE 4 -->
+<div class="scene" id="scene4">
+  <p>No matter what you picked —<br><br>this isn’t me pushing you.<br><br>This is just me saying:<br><b>I see you. I care.</b></p>
+  <button class="primary" onclick="goTo('scene5')">Okay… continue →</button>
+</div>
+
+<!-- SCENE 5 -->
+<div class="scene" id="scene5">
+  <p>
+    I actually wanted to make this website earlier.<br><br>
+    But it needed time — and somehow we were always together.<br><br>
+    Even that night at London Drugs when you took the night off…  
+    I had planned to get this done and officially send you this link.<br><br>
+    Work’s been busy. Breaks are literally just eating,  
+    talking to colleagues for a minute, and getting back to the grind.<br><br>
+    This isn’t an excuse — just an explanation.<br><br>
+    And I’m sorry I was slow.
+  </p>
+  <button class="primary" onclick="goTo('scene6')">💌 Keep going</button>
+</div>
+
+<!-- SCENE 6 -->
+<div class="scene" id="scene6">
+  <p>So instead of asking<br><i>“Will you be my Valentine?”</i><br><br>I wanted to ask something smaller first…</p>
+  <button class="primary" onclick="goTo('scene7')">What is it?</button>
+</div>
+
+<!-- SCENE 7 -->
+<div class="scene" id="scene7">
+  <p>Would you be okay<br>if I tried to make you smile again —<br>today, tomorrow, and after that too?</p>
+  <button class="primary" onclick="goTo('scene8yes')">💕 Yes, that’s okay</button><br>
+  <button class="secondary" onclick="goTo('scene8no')">🫶 I need a little time</button>
+</div>
+
+<!-- SCENE 8 NO -->
+<div class="scene" id="scene8no">
+  <p>I understand.<br><br>I’ll wait — patiently and respectfully 🤍</p>
+</div>
+
+<!-- FINAL VALENTINE SCENE -->
+<div class="scene" id="scene8yes">
+  <p>One last thing…<br><br>Only because you said it’s okay 💗</p>
+  <h1>Will the prettiest,<br>most beautiful,<br>kid, stupid princess<br>be my Valentine? 💘</h1>
+
+  <button class="yes" onclick="valentineYes()">Yes 💘</button>
+  <button class="no" onclick="valentineNo()">No 😒</button>
+</div>
+
+<script>
+function goTo(id) {
+  document.querySelectorAll('.scene').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+let noCount = 0;
+const noMessages = [
+  "Are you sure? 🥺",
+  "Think again 💕",
+  "I promise snacks 🧸",
+  "Okay now you’re just teasing 😭"
+];
+
+function valentineNo() {
+  const yesBtn = document.querySelector('.yes');
+  const noBtn = document.querySelector('.no');
+  noBtn.innerText = noMessages[noCount % noMessages.length];
+  noCount++;
+  let size = parseFloat(window.getComputedStyle(yesBtn).fontSize);
+  yesBtn.style.fontSize = (size * 1.25) + "px";
+}
+
+function valentineYes() {
+  document.body.innerHTML = `
+    <div class="scene active">
+      <h1>YAY 💖</h1>
+      <p>
+        Thank you for choosing me.<br><br>
+        Happy Valentine’s Day 🌹<br><br>
+        — Jainish
+      </p>
+    </div>
+  `;
+}
+</script>
+
+</body>
+</html>
